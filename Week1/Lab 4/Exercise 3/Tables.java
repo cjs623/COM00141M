@@ -9,7 +9,7 @@ public class Tables {
         for(i=0;i<12;i++) {
             for(j=0;j<12;j++) {
                 val = (i + 1) * (j + 1);
-                System.out.print(val + " ");
+                System.out.print(val + "	");
             }
             System.out.println("");
         }

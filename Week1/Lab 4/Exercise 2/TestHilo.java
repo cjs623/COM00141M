@@ -10,9 +10,6 @@ public class TestHilo {
 		h.generateNumber();
 		h.startGuessing();
 		
-		//while (corGuess != true) {
-			//corGuess = h.guess();
-		//}
 	}
 
 }

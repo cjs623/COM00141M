@@ -17,7 +17,7 @@ public class HiLo {
     }
 
     //Write the guess() method below
-    public boolean guess(){
+    public void guess(){
         //Use scanner to accept a user input
         //Create a new scanner object to receive user input
         Scanner sc = new Scanner(System.in);
@@ -28,7 +28,6 @@ public class HiLo {
         //write your code below
         if(guess==random) {
         System.out.println("Hit!!!!");
-        return true;
         }
         if(guess<random) {
         System.out.println("Low");
@@ -37,8 +36,6 @@ public class HiLo {
         System.out.println("High");
         }
 
-
-        return false;
 
     }
 

@@ -25,7 +25,7 @@ class Circles extends JFrame {
             System.out.println ("Enter the number of circles you want (range 1 to 100)");
             numCircles = sc.nextInt();
         }
-        sc.close();
+        //sc.close();
     }
 
     public void selSize() {
@@ -38,7 +38,7 @@ class Circles extends JFrame {
             System.out.println ("Enter the window y axis length (range 200 to 1000)");
             y = sc.nextInt();
         }
-        sc.close();
+        //sc.close();
     }
 
     public Circles() {

@@ -38,9 +38,7 @@ public class HiLo {
 
         System.out.println("Enter you guess ");
         int guess = sc.nextInt();
-        sc.close();
-
-
+                      
         //write your code below
         if(guess==random) {
         System.out.println("Hit!!!!");
@@ -52,8 +50,7 @@ public class HiLo {
         if(guess>random) {
         System.out.println("High");
         }
-
-
+        
         return false;
 
     }
