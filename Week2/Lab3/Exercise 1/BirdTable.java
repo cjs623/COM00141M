@@ -24,7 +24,7 @@ public class BirdTable {
       
 	   for ( int i = 0; i < birdArray.length; i++ ) {
 		   
-		   System.out.printf("Enter the number of Blue Tits seen on day %s:",i);
+		   System.out.printf("Enter the number of Blue Tits seen on day %s:",i + 1);
 		   
 		   birdArray[i] = sc.nextInt();
 	   }
