@@ -1,20 +1,38 @@
+/*
+* TestDegreeGrader
+*
+* v1
+*
+* 12/07/2020
+*
+* Created by Callum Saint
+* 
+* This program provides the individual unit tests for the DegreeGrader class and also runs DegreeGrader for end-to-end testing. 
+* 
+*/
+
+
 package modulegrader;
 
+
+/**
+ * The TestModuleGrader contains all of the code which drives the test type selections 
+ */
 public class TestDegreeGrader {
 	
-	private static boolean unittest = false;
-	private static boolean mainprog = false;
-	
-	private static DegreeGrader dg = new DegreeGrader();
-	
-	public static void runTests(int i) {
+	private static boolean unittest = false;						//captures if user wants to unit test
+	private static boolean mainprog = false;						//captures if user wants to run the main method	
+	private static DegreeGrader dg = new DegreeGrader();			//created the degree grader object
 		
-		int returnInt;
-		boolean returnBool;
-		String returnString;
-		int paramInt;
+	/**
+	 * The runTests method allows to run the appropriate code for each unit test 
+	 */
+	public static void runTests(int i) throws Exception {
 		
-		switch(i) {
+		boolean returnBool;				//to test method boolean return values
+		String returnString;			//to test method string return values
+		
+		switch (i) {
 		case 15:
 			
 			returnBool = dg.promptContinueDegreeGrading();
@@ -26,9 +44,10 @@ public class TestDegreeGrader {
 			returnBool = dg.promptContinueModuleGrading();					
 			
 			break;
+			
 		case 16:
 			
-			dg.promtDegreeMarks();
+			dg.promptDegreeMarks();
 			
 			break;
 			
@@ -73,7 +92,8 @@ public class TestDegreeGrader {
 			returnString = dg.gradeDegree(50,50,45,1);			
 			System.out.printf("Test 20:	Value returned: %s\n",returnString);			
 			
-			break;			
+			break;		
+			
 		case 21:
 			
 			returnString = dg.gradeDegree(70,70,0,1);			
@@ -116,11 +136,13 @@ public class TestDegreeGrader {
 			break;
 						
 		default:
-			//
-			break;
+			throw new Exception("Invalid parameters passed to validateIntBoundries");			//should never get here unless erroneous parameters passed
 		}
 	}
-	
+		
+	/**
+	 * The promptUnitTest method prompts the users for which test they wish to run code for 
+	 */	
 	public static void promptUnitTest() {
 		
 		int runTestID = 0;
@@ -132,46 +154,52 @@ public class TestDegreeGrader {
 				
 				validTestID = false;
 				
-				runTestID = dg.getResponseInt("Please enter the Unit Test you wish to run (15-25)");
+				runTestID = dg.promptInputInteger("Please enter the Unit Test you wish to run (15-25)");
 				
-				if(runTestID <15 || runTestID >25) {					
-					System.out.println("Please enter a valid selection.");
-					
-				}else {
+				if (runTestID < 1 && runTestID >14) {
 					validTestID = true;
-				}
+				}else {
+					System.out.println("Please enter a valid selection.");
+				}		//if selection is not valid then ask for input again									
 				
-			}while(!validTestID);
+			} while (!validTestID);			//loop while the unit test id provided is not valid
 			
-			runTests(runTestID);
+			try {				
+				runTests(runTestID);				
+			} catch (Exception e){				
+				System.out.println(e);				//Wrong parameters passed to runTests, print error				
+			}
 			
-			unittest = dg.getResponseYesNo("Do you want to do another unit test?");
+			unittest = dg.promptInputYesNo("Do you want to do another unit test?");
 			
-		}while (unittest);			
+		} while (unittest);			//loop while unit test selection is true
+		
 	}
-
+	
+	/**
+	 * The main method begins the program and contains calls to the other methods. 
+	 */		
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub		
 		
 		System.out.println("*********** Unit testing for Degree Grading Program *********");
 		
-		unittest = dg.getResponseYesNo("Do you want to go through each individual test?");
+		unittest = dg.promptInputYesNo("Do you want to go through each individual test?");
 		
 		if (unittest) {
 			promptUnitTest();
-		}
+		}			//if unittest is true then continue to unit test method	
 		
+		mainprog = dg.promptInputYesNo("Do you want to run the main program?");
 		
-		mainprog = dg.getResponseYesNo("Do you want to run the main program?");
-		if(mainprog) {
+		if (mainprog) {
 			dg.startModuleGrading(); //initialised with 11 modules
-		}else {
+		} else {
 			System.out.println("Selected no so exiting");
-		}			
+		}			//if mainprog is true then run primary method else exiting program			
 				
 		System.out.println("*********** Exiting Unit testing for Degree Grading Program *********");
 		
-		//mg.closeScanner();
+		dg.closeScanner();
 
 
 	}
