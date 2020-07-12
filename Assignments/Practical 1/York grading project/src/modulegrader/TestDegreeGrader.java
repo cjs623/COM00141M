@@ -40,8 +40,8 @@ public class TestDegreeGrader {
 			
 			returnBool = dg.promptContinueDegreeGrading();
 			System.out.printf("Test 15:	Value returned if no: %s\n",returnBool);
-						
-			returnBool = dg.promptContinueModuleGrading();					
+			
+			returnBool = dg.promptContinueDegreeGrading();
 			
 			break;
 			
@@ -156,7 +156,7 @@ public class TestDegreeGrader {
 				
 				runTestID = dg.promptInputInteger("Please enter the Unit Test you wish to run (15-25)");
 				
-				if (runTestID < 1 && runTestID >14) {
+				if (runTestID >= 15 && runTestID <=25) {
 					validTestID = true;
 				}else {
 					System.out.println("Please enter a valid selection.");
@@ -192,7 +192,7 @@ public class TestDegreeGrader {
 		mainprog = dg.promptInputYesNo("Do you want to run the main program?");
 		
 		if (mainprog) {
-			dg.startModuleGrading(); //initialised with 11 modules
+			dg.startDegreeGrading(); //initialised with 11 modules
 		} else {
 			System.out.println("Selected no so exiting");
 		}			//if mainprog is true then run primary method else exiting program			

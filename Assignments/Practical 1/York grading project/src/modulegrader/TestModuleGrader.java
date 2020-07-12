@@ -216,7 +216,7 @@ public class TestModuleGrader {
 				
 				runTestID = mg.promptInputInteger("Please enter the Unit Test you wish to run (1-14)");
 				
-				if (runTestID < 1 && runTestID >14) {
+				if (runTestID >= 1 && runTestID <=14) {
 					validTestID = true;
 				}else {
 					System.out.println("Please enter a valid selection.");
